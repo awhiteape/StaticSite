@@ -26,7 +26,7 @@ class TestTextNode(unittest.TestCase):
 
     def test_to_html_no_children(self):
         node = LeafNode("p", "This is a paragraph test")
-        self.assertEqual(node.to_html(), "<p>his is a paragraph test</p>")
+        self.assertEqual(node.to_html(), "<p>This is a paragraph test</p>")
 
     def test_to_html_no_tag(self):
         node = LeafNode(None, "This is a test")
