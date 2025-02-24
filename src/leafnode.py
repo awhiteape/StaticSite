@@ -3,7 +3,7 @@ class LeafNode(HTMLNode):
     def __init__(self, tag, value, props=None):
         if value is None:
             raise ValueError("LeafNode requires a value")
-        super().__init__(tag, value,props)
+        super().__init__(tag, value, None, props)
 
     def to_html(self):
         if self.value == None:
