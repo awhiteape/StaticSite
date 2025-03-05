@@ -4,6 +4,7 @@ from textnode import TextNode, TextType
 from htmlnode import HTMLNode
 from leafnode import LeafNode
 from parentnode import ParentNode
+from text_node_to_html_node import text_node_to_html_node
 
 class TestTextNode(unittest.TestCase):
     def test_eq(self):
@@ -75,6 +76,13 @@ class TestTextNode(unittest.TestCase):
         self.assertEqual(
             node.to_html(),
             "<h2><b>Bold text</b>Normal text<i>italic text</i>Normal text</h2>",
+        )
+    def test_text_to_html(self):
+        node = TextNode("This is a text node", TextType.TEXT)
+        html_node = text_node_to_html_node(node)
+        self.assertEqual(
+            html_node.to_html(),
+            "This is a text node"
         )
 
 if __name__ == "__main__":
