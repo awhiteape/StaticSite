@@ -3,6 +3,7 @@ from htmlnode import HTMLNode
 from leafnode import LeafNode
 from parentnode import ParentNode
 from text_node_to_html_node import text_node_to_html_node
+from split_node_delimiter import split_nodes_delimiter
 
 def main():
     text_test = TextNode("This is a text node", "bold", "https://www.boot.dev")
@@ -24,10 +25,8 @@ def main():
     node = TextNode("This is a text node", TextType.TEXT)
     html_node = text_node_to_html_node(node)
     print(html_node.to_html())
-    try:
-        text_node_to_html_node(-1)
-    except Exception as err:
-        print(err)
-
+    
+    node = TextNode("This is text with a `code block` word", TextType.TEXT)
+    new_nodes = split_nodes_delimiter([node], "`", TextType.CODE)
 
 main()
