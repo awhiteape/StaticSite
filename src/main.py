@@ -4,6 +4,7 @@ from leafnode import LeafNode
 from parentnode import ParentNode
 from text_node_to_html_node import text_node_to_html_node
 from split_node_delimiter import split_nodes_delimiter
+from extract_markdown import extract_markdown_images, extract_markdown_links
 
 def main():
     text_test = TextNode("This is a text node", "bold", "https://www.boot.dev")
@@ -25,8 +26,13 @@ def main():
     node = TextNode("This is a text node", TextType.TEXT)
     html_node = text_node_to_html_node(node)
     print(html_node.to_html())
-    
+
     node = TextNode("This is text with a `code block` word", TextType.TEXT)
     new_nodes = split_nodes_delimiter([node], "`", TextType.CODE)
+
+    print("======Testing Extraction=====")
+    text = "This is text with a link [to boot dev](https://www.boot.dev) and [to youtube](https://www.youtube.com/@bootdotdev)"
+    print(extract_markdown_links(text))
+    # [("to boot dev", "https://www.boot.dev"), ("to youtube", "https://www.youtube.com/@bootdotdev")]
 
 main()
