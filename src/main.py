@@ -4,7 +4,7 @@ from leafnode import LeafNode
 from parentnode import ParentNode
 from text_node_to_html_node import text_node_to_html_node
 from split_node_delimiter import split_nodes_delimiter
-from extract_markdown import extract_markdown_images, extract_markdown_links
+from extract_markdown import *
 
 def main():
     text_test = TextNode("This is a text node", "bold", "https://www.boot.dev")
@@ -34,5 +34,9 @@ def main():
     text = "This is text with a link [to boot dev](https://www.boot.dev) and [to youtube](https://www.youtube.com/@bootdotdev)"
     print(extract_markdown_links(text))
     # [("to boot dev", "https://www.boot.dev"), ("to youtube", "https://www.youtube.com/@bootdotdev")]
-
+    text_node = TextNode(
+        "This is text with an ![image](https://i.imgur.com/zjjcJKZ.png) and another ![second image](https://i.imgur.com/3elNhQu.png)",
+        TextType.TEXT,
+    )
+    split_nodes_image([text_node])
 main()
